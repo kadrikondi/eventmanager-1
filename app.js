@@ -19,6 +19,6 @@ app.get('*', (req, res) => {
 
 // listen on the port
 app.listen(port, () => {
-    mongoose.connect('mongodb://demo:12345@ds161901.mlab.com:61901/eventsmanager')
+    mongoose.connect('mongodb://eventmanager:kadzee222@ds231740.mlab.com:31740/kondipressdb')
     console.log(`our app is listening on port ${port}`)
 })
