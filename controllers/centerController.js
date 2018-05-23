@@ -19,3 +19,19 @@ exports.addNewCenter = async (req, res) => {
         res.json(newCenter)
     }
 }
+
+exports.getAllCenters = async (req, res) => {
+    const centers = await Center.find()
+    res.json(centers)
+}
+
+exports.getOneCenterById = async (req, res) => {
+    const center = await Center.findById(req.params.id)
+    if(center){
+        res.json(center)
+    }else{
+        res.json({
+            message: `sorry, center doenst exist`
+        })
+    }
+}
