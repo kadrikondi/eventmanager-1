@@ -9,7 +9,7 @@ const router = require('./routes/index.js')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/', router)
 
-
+ 
 // defining port for server to run on
 const port = 3000
 
@@ -19,6 +19,16 @@ app.get('*', (req, res) => {
 
 // listen on the port
 app.listen(port, () => {
+     mongoose.connect('mongodb://localhost/eventcenter')
+    .then(()=>{
+
+        console.log("mongodb connected")
+    })
+    .catch((err)=>{
+        console.log(err)
+    })||
     mongoose.connect('mongodb://eventmanager:kadzee222@ds231740.mlab.com:31740/kondipressdb')
+
+    
     console.log(`our app is listening on port ${port}`)
 })
