@@ -33,7 +33,7 @@ const Landing = () => {
 
         email,
       };
-      console.log(login);
+      // console.log(login);
       try {
         const User = await axios.post("http://localhost:8000/login", login);
         console.log(User);

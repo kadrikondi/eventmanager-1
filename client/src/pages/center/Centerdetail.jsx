@@ -11,8 +11,29 @@ import {
 } from "mdb-react-ui-kit";
 import "./Centerdetail.css";
 import Sidebar from "../../layout/sidebar";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const Centerdetail = () => {
+  
+  const [center, setCenter] = useState();
+  const [message, setMessage] = useState('');
+  const { id } = useParams();
+
+  // useEffect(async () => {
+  //   try {
+  //     const response = await axios.post("http://localhost:8000/centers/" + id);
+  //     console.log(response);
+  //       setCenter(response)
+  //       setMessage('');
+
+  //       setIsLoading(false);
+  //     }
+  //     catch (error) {
+  //     setIsLoading(false);
+  //     setMessage(error);
+  //     console.log(error);
+  //   }
+  // }, [])
   return (
     <div>
       <Sidebar />

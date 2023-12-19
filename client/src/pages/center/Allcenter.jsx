@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   MDBCard,
   MDBCardBody,
@@ -11,8 +12,29 @@ import {
   MDBContainer,
 } from "mdb-react-ui-kit";
 import Sidebar from "../../layout/sidebar";
+import { response } from "express";
 
 const Allcenter = () => {
+
+  const [centers, setCenters] = useState();
+  const [message, setMessage] = useState('Ola');
+
+  // useEffect(async () => {
+  //   try {
+  //     const response = await axios.post("http://localhost:8000/centers");
+  //     console.log(response);
+  //       setCenters(response)
+  //       setMessage('');
+
+  //       setIsLoading(false);
+  //     }
+  //     catch (error) {
+  //     setIsLoading(false);
+  //     setMessage(error);
+  //     console.log(error);
+  //   }
+  // }, [])
+ 
   return (
     <>
       <Sidebar />
@@ -21,7 +43,29 @@ const Allcenter = () => {
         style={{ marginLeft: "260px", marginTop: "80px" }}
       >
         <MDBRow className="row-cols-1 row-cols-md-4 g-4">
-          <MDBCol>
+          
+          {
+            centers & centers.map((center, index) => (
+              <div key={index}>
+                <MDBCol>
+                  <MDBCard>
+                    <MDBCardImage
+                      src={center.img}
+                      position="top"
+                      alt="..."
+                    />
+
+                    <MDBCardBody>
+                      <MDBCardTitle>{center.centerName}</MDBCardTitle>
+                      <MDBCardText>{center.capacity}</MDBCardText>
+                      <MDBBtn href={`/centers/${center.id}`}>Center Details</MDBBtn>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBCol>
+              </div>
+            ))
+          }
+          {/* <MDBCol>
             <MDBCard>
               <MDBCardImage
                 src="https://mdbootstrap.com/img/new/standard/nature/184.webp"
@@ -106,7 +150,7 @@ const Allcenter = () => {
                 <MDBBtn href="#">Center</MDBBtn>
               </MDBCardBody>
             </MDBCard>
-          </MDBCol>
+          </MDBCol> */}
         </MDBRow>
       </MDBContainer>
     </>
